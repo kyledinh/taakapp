@@ -22,27 +22,27 @@
     </div>
     <div id="contents">
 
-        <form action="newflyer.taak" method="post">
-            <h2>A New Lost Pet</h2>
+        <form action="newtask.taak" method="post">
+            <h2>A New Task</h2>
             <table id="tb1">
                 <tr>
-                    <td>Id: </td>
-                    <td><input type="text" name="facebookid" /></td>
+                    <td>Google Id: </td>
+                    <td><input type="text" name="google_id" /></td>
                 </tr>
                 <tr>
-                    <td>Pet Name: </td>
-                    <td><input type="text" name="pet_name" /></td>
+                    <td>Task Title: </td>
+                    <td><input type="text" name="task_title" /></td>
                 </tr>
                 <tr>
-                    <td>Pet Type:</td>
-                    <td><select id="pet_type_select" name="pet_type" />
-			            <option id="pet_type_option" value="">......</option>
+                    <td>Task Type:</td>
+                    <td><select id="task_type_select" name="task_type" />
+			            <option id="task_type_option" value="">......</option>
 			            </select>
 		            </td>
                 </tr>
                 <tr>
-                    <td>Pet Description:</td>
-                    <td><input type="text" name="pet_description" /></td>
+                    <td>Task Description:</td>
+                    <td><input type="text" name="task_desc" /></td>
                 </tr>
                 <tr>
                     <td><input type="submit" value="Submit" /></td>
@@ -56,17 +56,17 @@
 </div>
 <script type="text/javascript">
 
-function populatePetType(pt) {
+function populateType(pt) {
     $.each(pt, function(key, value) {
-        var row = $('#pet_type_option').clone();
+        var row = $('#task_type_option').clone();
 	    row.attr('value', key);
 	    row.text(value);
-	    row.appendTo('#pet_type_select');
+	    row.appendTo('#task_type_select');
     });
 }
 
 $(document).ready(function() {
-    $.getJSON("js/types_of_tasks.json", {}, populatePetType);
+    $.getJSON("js/types_of_tasks.json", {}, populateType);
 })
 
 </script>

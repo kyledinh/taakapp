@@ -1,0 +1,12 @@
+import com.kalrsn.taakapp._
+
+val task_title = request.params("task_title")
+val task_type  = request.params("task_type")
+val task_desc  = request.params("task_desc")
+val google_id  = request.params("google_id")
+
+val newtask = Flyer(null, google_id, task_title, task_type, task_desc, null, null, null, null, true)
+
+TaskCache.addTask(newtask)
+
+redirect("home.html")

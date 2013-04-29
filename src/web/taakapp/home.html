@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title>Fido Finder</title>
+    <title>Taak App</title>
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <link rel="stylesheet" href="css/doom.css" type="text/css" media="screen" />
@@ -17,20 +17,20 @@
     <div id="navigation">
         <ul id="navmenu">
             <li><a href="home.html">Home</a></li>
-            <li><a href="createaflyer.html">Create A Flyer</a></li>
+            <li><a href="createatask.html">Create A Task</a></li>
             <li><a href="uploader.html">Uploader</a></li>
         </ul>
     </div>
     <div id="contents">
 
-            <h2>List of all pets</h2>
-            <table id="pet_table">
-                <tr id="pet_row">
+            <h2>List of tasks</h2>
+            <table id="task_table">
+                <tr id="task_row">
                     <td id="index">Id</td>
-                    <td id="facebookid">FacebookId</td>
-                    <td id="pet_name">Pet Name</td>
-                    <td id="pet_type">Pet Type</td>
-                    <td id="pet_description">Desc</td>
+                    <td id="google_id">Google Id</td>
+                    <td id="task_title">Task Title</td>
+                    <td id="task_type">Task Type</td>
+                    <td id="task_desc">Desc</td>
                 </tr>
 
             </table>
@@ -43,26 +43,26 @@
 
 <script type="text/javascript">
 
-function updateTable(flyers) {
+function updateTable(records) {
 
-    for (var i=0; i < flyers.length; i++) {
-        var row = $('#pet_row').clone();
-        var flyer = flyers[i];
+    for (var i=0; i < records.length; i++) {
+        var row = $('#task_row').clone();
+        var rec = records[i];
 
-        row.find('#index').text(flyer.id);
-        row.find('#facebookid').text(flyer.facebookid);
-        row.find('#pet_name').text(flyer.pet_name);
-        row.find('#pet_type').text(flyer.pet_type);
-        row.find('#pet_description').text(flyer.pet_description);
-        row.attr('id','flyer_' + flyer.id);
-        row.appendTo('#pet_table');
+        row.find('#index').text(rec.id);
+        row.find('#google_id').text(rec.google_id);
+        row.find('#task_title').text(rec.task_title);
+        row.find('#task_type').text(rec.task_type);
+        row.find('#task_desc').text(rec.task_desc);
+        row.attr('id','task_' + rec.id);
+        row.appendTo('#task_table');
     }
-    $('#pet_row').attr('style','background-color:#BDBDBD')
+    $('#task_row').attr('style','background-color:#BDBDBD')
 
 }
 
 $(document).ready(function() {
-    $.getJSON("rest_listallflyers.taak", {}, updateTable);
+    $.getJSON("rest_listalltasks.taak", {}, updateTable);
 })
 
 </script>

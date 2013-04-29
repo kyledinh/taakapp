@@ -1,3 +1,0 @@
-import com.kalrsn.fidofinder._
-
-RestAPI.listAllFlyers()
