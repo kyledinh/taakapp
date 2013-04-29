@@ -1,0 +1,12 @@
+import com.kalrsn.fidofinder._
+
+val pet_name = request.params("pet_name")
+val pet_type = request.params("pet_type")
+val pet_desc = request.params("pet_description")
+val facebookid = request.params("facebookid")
+
+val newflyer = Flyer(facebookid, pet_name, pet_type, pet_desc, "San Francisco","" ,"", null, null, true)
+
+FlyerCache.addFlyer(newflyer)
+
+redirect("home.html")

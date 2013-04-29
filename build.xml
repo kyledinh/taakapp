@@ -1,0 +1,110 @@
+<project name="taakapp" basedir="." default="dist">
+    <description>taakapp</description>
+
+    <target name="init">
+        <property environment="env"/>
+
+        <!-- check for required tools -->
+        <fail message="Missing SCALA_HOME variable in OS environment">
+            <condition>
+                <isset property="${env.SCALA_HOME}"/>
+            </condition>
+        </fail>
+        <fail message="Missing JAVA_HOME variable in OS environment">
+            <condition>
+                <isset property="${env.JAVA_HOME}"/>
+            </condition>
+        </fail>
+
+        <property name="java.home" location="${env.JAVA_HOME}"/>
+        <property name="scala.home" location="${env.SCALA_HOME}"/>
+        <property name="install.dir" location="/opt/ninthdrug"/>
+        <property name="app.name" location="taakapp"/>
+        <echo message="basedir: ${basedir}"/>
+        <echo message="java.home:  ${java.home}"/>
+        <echo message="scala.home: ${scala.home}"/>
+        <echo message="install.dir: ${install.dir}"/>
+        <mkdir dir="build/classes"/>
+        <path id="build.classpath">
+            <pathelement location="${scala.home}/lib/scala-library.jar"/>
+            <pathelement location="lib/ninthdrug.jar"/>
+            <pathelement location="lib/mail.jar"/>
+            <pathelement location="lib/postgresql-9.2-1002.jdbc4.jar"/>
+        </path>
+        <path id="test.classpath">
+            <pathelement location="${scala.home}/lib/scala-library.jar"/>
+            <pathelement location="${scala.home}/lib/scala-reflect.jar"/>
+            <pathelement location="lib/ninthdrug.jar"/>
+            <pathelement location="lib/mail.jar"/>
+            <pathelement location="lib/postgresql-9.2-1002.jdbc4.jar"/>
+            <pathelement location="lib/scalatest_2.9.0-1.8.jar"/>
+            <pathelement location="build/classes"/>
+        </path>
+
+        <taskdef resource="scala/tools/ant/antlib.xml">
+            <classpath>
+                <pathelement location="${scala.home}/lib/scala-compiler.jar"/>
+                <pathelement location="${scala.home}/lib/scala-library.jar"/>
+                <pathelement location="${scala.home}/lib/scala-reflect.jar"/>
+            </classpath>
+        </taskdef>
+    </target>
+
+    <target name="compile" depends="init">
+        <scalac srcdir="src/main/scala/taakapp"
+                destdir="build/classes"
+                classpathref="build.classpath"
+                scalacdebugging="yes"
+                deprecation="yes">
+            <include name="**/*.scala"/>
+        </scalac>
+    </target>
+
+    <target name="compile-test" depends="init">
+        <scalac srcdir="src/test/scala"
+                destdir="build/classes"
+                classpathref="test.classpath"
+                scalacdebugging="yes"
+                deprecation="yes">
+            <include name="**/*.scala"/>
+        </scalac>
+    </target>
+
+    <target name="jar" depends="compile">
+        <jar jarfile="build/taakapp.jar" basedir="build/classes"/>
+    </target>
+
+    <target name="dist" depends="jar">
+        <mkdir dir="build/dist/lib"/>
+        <mkdir dir="build/dist/web/taakapp"/>
+        <mkdir dir="build/dist/conf"/>
+        <copy todir="build/dist/lib" file="build/taakapp.jar"/>
+        <copy todir="build/dist/conf" file="conf/taakapp.conf"/>
+        <copy todir="build/dist/web/taakapp">
+            <fileset dir="src/web/taakapp"/>
+        </copy>
+    </target>
+
+    <target name="deploy" depends="init">
+        <copy todir="${install.dir}/lib" file="build/dist/lib/taakapp.jar"/>
+        <copy todir="${install.dir}/conf" file="build/dist/conf/taakapp.conf"/>
+        <copy todir="${install.dir}/websites/taakapp">
+            <fileset dir="build/dist/web/taakapp"/>
+        </copy>
+    </target>
+
+    <target name="test" depends="compile, compile-test">
+        <taskdef name="scalatest" classname="org.scalatest.tools.ScalaTestAntTask" classpathref="test.classpath"/>
+        <scalatest>
+            <runpath>
+                <pathelement path="test.classpath"/>
+            </runpath>
+            <suite classname="com.kalrsn.fidofinder.FlyerCacheSuite"/>
+            <reporter type="stdout"/>
+        </scalatest>
+    </target>
+
+    <target name="clean">
+        <delete dir="build"/>
+    </target>
+</project>

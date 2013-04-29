@@ -1,0 +1,55 @@
+What you need:
+ - linux server
+ - java jdk version 1.6
+ - ant version 1.8
+ - scala version 2.10 - http://www.scala-lang.org/
+ - ninthdrug - https://github.com/ninthdrug/ninthdrug
+
+Optional:
+ - postgresql
+ - sudo rights to postgres user
+
+Buildingct the tar ball.
+ - Extract the tar ball.
+ - Change to the fidofinder/trunk directory.
+ - Edit the build.xml file to fit your installation. At the minimum you may
+   want to change the scala.home property to point to your scala installtion
+   and install.dir to point to where you want to install doom.  It is easiest
+   to use the same directory that you installed ninthdrug.
+ - Invoke ant.
+ - Invoke ant install.
+
+Configuring:
+   The installation adds the path to the main doom configuration to your $HOME/.ninthdrug file.
+   That should be ${install.dir}/conf/fidofinder.conf.  Edit this as you see fit.
+
+   The doom database can be created by running the create_fido_db.sh script.  
+   You will need sudo rights to the postgres user for this step.
+   - create_fido_db.sh
+
+
+Edit the fidofinder.conf file to set the correct user and password for the fido database.
+
+Code Generator:
+
+Is written for Postgres.
+- Create a user and a database for that user
+- Edit create_tables.sh
+
+- Use this command to generate a db.description file
+psql fido fido -h localhost < describe_fido.sql > db.description
+- Edit the daogenerator.conf
+- Run the daogenerator.sh <tablename> for each table
+- Publish code to src directory with publishdaocode.sh
+
+
+Defaults:
+
+taak-app database
+  -tasks table
+
+  each table should have
+  -id Int
+  -active Boolean
+
+

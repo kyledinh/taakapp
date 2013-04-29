@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Taak App</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <link rel="SHORTCUT ICON" href="favicon.ico"/>
+    <link rel="stylesheet" href="css/doom.css" type="text/css" media="screen" />
+    <script type="text/javascript" src="js/jquery-1.8.3.js"></script>
+</head>
+<body>
+<div id="maincontainer">
+    <div id="header">
+
+    </div>
+    <div id="navigation">
+        <ul id="navmenu">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="createtask.html">Create A Task</a></li>
+        </ul>
+    </div>
+    <div id="contents">
+
+        <form action="newflyer.taak" method="post">
+            <h2>A New Lost Pet</h2>
+            <table id="tb1">
+                <tr>
+                    <td>Id: </td>
+                    <td><input type="text" name="facebookid" /></td>
+                </tr>
+                <tr>
+                    <td>Pet Name: </td>
+                    <td><input type="text" name="pet_name" /></td>
+                </tr>
+                <tr>
+                    <td>Pet Type:</td>
+                    <td><select id="pet_type_select" name="pet_type" />
+			            <option id="pet_type_option" value="">......</option>
+			            </select>
+		            </td>
+                </tr>
+                <tr>
+                    <td>Pet Description:</td>
+                    <td><input type="text" name="pet_description" /></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Submit" /></td>
+                </tr>
+            </table>
+        </form>        
+
+    </div>
+    <div id="footer">
+    </div>
+</div>
+<script type="text/javascript">
+
+function populatePetType(pt) {
+    $.each(pt, function(key, value) {
+        var row = $('#pet_type_option').clone();
+	    row.attr('value', key);
+	    row.text(value);
+	    row.appendTo('#pet_type_select');
+    });
+}
+
+$(document).ready(function() {
+    $.getJSON("js/types_of_tasks.json", {}, populatePetType);
+})
+
+</script>
+</body>
+</html>

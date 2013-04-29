@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Fido Finder</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="css/doom.css" type="text/css" media="screen" />
+    <link rel="SHORTCUT ICON" href="favicon.ico"/>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+<div id="maincontainer">
+    <div id="header">
+
+    </div>
+    <div id="navigation">
+        <ul id="navmenu">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="createaflyer.html">Create A Flyer</a></li>
+            <li><a href="uploader.html">Uploader</a></li>
+        </ul>
+    </div>
+    <div id="contents">
+
+            <h2>List of all pets</h2>
+            <table id="pet_table">
+                <tr id="pet_row">
+                    <td id="index">Id</td>
+                    <td id="facebookid">FacebookId</td>
+                    <td id="pet_name">Pet Name</td>
+                    <td id="pet_type">Pet Type</td>
+                    <td id="pet_description">Desc</td>
+                </tr>
+
+            </table>
+
+    </div>
+
+    <div id="footer">
+    </div>
+</div>
+
+<script type="text/javascript">
+
+function updateTable(flyers) {
+
+    for (var i=0; i < flyers.length; i++) {
+        var row = $('#pet_row').clone();
+        var flyer = flyers[i];
+
+        row.find('#index').text(flyer.id);
+        row.find('#facebookid').text(flyer.facebookid);
+        row.find('#pet_name').text(flyer.pet_name);
+        row.find('#pet_type').text(flyer.pet_type);
+        row.find('#pet_description').text(flyer.pet_description);
+        row.attr('id','flyer_' + flyer.id);
+        row.appendTo('#pet_table');
+    }
+    $('#pet_row').attr('style','background-color:#BDBDBD')
+
+}
+
+$(document).ready(function() {
+    $.getJSON("rest_listallflyers.taak", {}, updateTable);
+})
+
+</script>
+
+</body>
+</html>
