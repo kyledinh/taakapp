@@ -9,11 +9,11 @@ Optional:
  - postgresql
  - sudo rights to postgres user
 
-Buildingct the tar ball.
+Building from source.
  - Extract the tar ball.
- - Change to the fidofinder/trunk directory.
+ - Change to the taakapp/trunk directory.
  - Edit the build.xml file to fit your installation. At the minimum you may
-   want to change the scala.home property to point to your scala installtion
+   want to change the scala.home property to point to your scala installation
    and install.dir to point to where you want to install doom.  It is easiest
    to use the same directory that you installed ninthdrug.
  - Invoke ant.
@@ -21,11 +21,11 @@ Buildingct the tar ball.
 
 Configuring:
    The installation adds the path to the main doom configuration to your $HOME/.ninthdrug file.
-   That should be ${install.dir}/conf/fidofinder.conf.  Edit this as you see fit.
+   That should be ${install.dir}/conf/taakapp.conf.  Edit this as you see fit.
 
    The doom database can be created by running the create_fido_db.sh script.  
    You will need sudo rights to the postgres user for this step.
-   - create_fido_db.sh
+   - create_taakapp_db.sh
 
 
 Edit the fidofinder.conf file to set the correct user and password for the fido database.
@@ -37,7 +37,7 @@ Is written for Postgres.
 - Edit create_tables.sh
 
 - Use this command to generate a db.description file
-psql fido fido -h localhost < describe_fido.sql > db.description
+psql taak taaak -h localhost < describe_tables.sql > db.description
 - Edit the daogenerator.conf
 - Run the daogenerator.sh <tablename> for each table
 - Publish code to src directory with publishdaocode.sh
@@ -45,8 +45,9 @@ psql fido fido -h localhost < describe_fido.sql > db.description
 
 Defaults:
 
-taak-app database
+taakapp database
   -tasks table
+  -users table
 
   each table should have
   -id Int
