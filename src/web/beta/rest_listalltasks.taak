@@ -1,0 +1,3 @@
+import com.kalrsn.taakapp._
+
+RestAPI.listAllTasks()

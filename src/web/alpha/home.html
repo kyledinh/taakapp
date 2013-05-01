@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Taak App</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="css/doom.css" type="text/css" media="screen" />
+    <link rel="SHORTCUT ICON" href="favicon.ico"/>
+</head>
+<body onload="pageInit()">
+<div id="maincontainer">
+    <div id="header">
+
+    </div>
+    <div id="navigation">
+        <ul id="navmenu">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="createatask.html">Create A Task</a></li>
+            <li><a href="uploader.html">Uploader</a></li>
+        </ul>
+    </div>
+    <div id="contents">
+
+            <h2>List of tasks</h2>
+            <table id="task_table">
+                <tr id="task_row">
+                    <td id="index">Id</td>
+                    <td id="google_id">Google Id</td>
+                    <td id="task_title">Task Title</td>
+                    <td id="task_type">Task Type</td>
+                    <td id="task_desc">Desc</td>
+                </tr>
+
+            </table>
+
+    </div>
+
+    <div id="footer">
+    </div>
+</div>
+
+<script type="text/javascript">
+
+// k_ js library of functions
+function k_gelbi(id) {
+  return document.getElementById(id);
+}
+
+function k_create(tag, innerHtml, attr, value) {
+  var elem = document.createElement(tag);
+  elem.innerHTML = innerHtml;
+  if ((attr !== null) && (attr !== "")) {
+  	elem.setAttribute(attr, value);
+  }
+  return elem;
+}
+
+function k_create(tag, innerHtml) {
+  var elem = document.createElement(tag);
+  elem.innerHTML = innerHtml;
+  return elem;
+}
+
+function k_clone(node, id) {
+  var elem = node.cloneNode(true);
+  if ((id !== "") && (id !== null)) {
+    elem.setAttribute("id", id);
+  } else {
+    elem.removeAttribute("id");
+  }
+  return elem;
+}
+
+function updateTaskTable(records) {    
+  
+  for (var i=0; i < records.length; i++) {
+    var rec = records[i];    
+    var row = k_create("tr", "");    
+    row.appendChild(k_create("td", rec.id, "", ""));
+    row.appendChild(k_create("td", rec.google_id , "", ""));  
+    row.appendChild(k_create("td", rec.task_title, "", ""));
+    row.appendChild(k_create("td", rec.task_type, "", ""));
+    row.appendChild(k_create("td", rec.task_desc, "", ""));
+    k_gelbi("task_table").appendChild(row);    
+  }
+}
+
+function ajaxRequest() {
+    var activexmodes=["Msxml2.XMLHTTP", "Microsoft.XMLHTTP"] //activeX versions to check for in IE
+    if (window.ActiveXObject) { //Test for support for ActiveXObject in IE first (as XMLHttpRequest in IE7 is broken)
+        for (var i=0; i < activexmodes.length; i++) {
+            try {
+                return new ActiveXObject(activexmodes[i]);
+               } catch(e) {
+                //suppress error
+            }
+        }
+    }
+    else if (window.XMLHttpRequest) // if Mozilla, Safari etc
+        return new XMLHttpRequest();
+    else
+        return false;
+}
+ 
+function initAjax(uri, callback) {
+	var ajax = new ajaxRequest(); 	
+	ajax.onreadystatechange = function() {	
+    	if (ajax.readyState == 4 && ajax.status == 200) {
+            var jsondata = eval('(' + ajax.responseText + ')');  
+            if (callback) {   
+            	callback(jsondata); 
+            }     	
+    	}
+	}
+	ajax.open("GET", uri, true);
+	ajax.send(null);
+}
+
+function pageInit() {
+	initAjax("rest_listalltasks.taak", updateTaskTable);
+}
+
+</script>
+
+</body>
+</html>

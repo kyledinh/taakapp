@@ -1,4 +1,0 @@
-import com.kalrsn.fidofinder._
-
-val out = RestAPI.listAllFlyers()
-return out

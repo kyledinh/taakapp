@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Taak App</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="css/doom.css" type="text/css" media="screen" />
+    <link rel="SHORTCUT ICON" href="favicon.ico"/>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+<div id="maincontainer">
+    <div id="header">
+
+    </div>
+    <div id="navigation">
+        <ul id="navmenu">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="createatask.html">Create A Task</a></li>
+        </ul>
+    </div>
+    <div id="contents">
+    <div id="uploader">
+
+        <h2>File Uploader</h2>
+            <form method="POST" enctype="multipart/form-data" action="upload.taak">
+                File to upload: <input type="file" name="upload_file"><br/>
+                Notes about the file: <input type="text" name="note"><br/>
+                <br/>
+                <input type="submit" value="Press"> to upload the file!
+            </form>
+
+    </div>
+    </div>
+
+    <div id="footer">
+    </div>
+</div>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+})
+
+</script>
+
+</body>
+</html>
