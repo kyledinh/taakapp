@@ -18,11 +18,11 @@
 
         <property name="java.home" location="${env.JAVA_HOME}"/>
         <property name="scala.home" location="${env.SCALA_HOME}"/>
-        <property name="install.dir" location="/opt/ninthdrug"/>
-        <property name="app.name" location="taakapp"/>
+        <property file="conf/taakapp.conf"/>
         <echo message="basedir: ${basedir}"/>
         <echo message="java.home:  ${java.home}"/>
         <echo message="scala.home: ${scala.home}"/>
+        <echo message="app.name: ${app.name}"/>
         <echo message="install.dir: ${install.dir}"/>
         <mkdir dir="build/classes"/>
         <path id="build.classpath">
@@ -51,7 +51,7 @@
     </target>
 
     <target name="compile" depends="init">
-        <scalac srcdir="src/main/scala/taakapp"
+        <scalac srcdir="src/main/scala/${app.name}"
                 destdir="build/classes"
                 classpathref="build.classpath"
                 scalacdebugging="yes"
@@ -71,43 +71,54 @@
     </target>
 
     <target name="jar" depends="compile">
-        <jar jarfile="build/taakapp.jar" basedir="build/classes"/>
+        <jar jarfile="build/${app.name}.jar" basedir="build/classes"/>
     </target>
 
     <target name="dist" depends="jar">
         <mkdir dir="build/dist/lib"/>
         <mkdir dir="build/dist/web"/>
         <mkdir dir="build/dist/conf"/>
-        <copy todir="build/dist/lib" file="build/taakapp.jar"/>
-        <copy todir="build/dist/conf" file="conf/taakapp.conf"/>
+        <copy todir="build/dist/lib" file="build/${app.name}.jar"/>
+        <copy todir="build/dist/conf" file="conf/${app.name}.conf"/>
         <copy todir="build/dist/web">
             <fileset dir="src/web"/>
         </copy>
     </target>
 
     <target name="deploy" depends="init">
-        <copy todir="${install.dir}/lib" file="build/dist/lib/taakapp.jar"/>
-        <copy todir="${install.dir}/conf" file="build/dist/conf/taakapp.conf"/>
-        <copy todir="${install.dir}/websites/taakapp">
-            <fileset dir="build/dist/web/taakapp"/>
+        <echo message="deploying website: ${default.web}"/>
+        <copy todir="${install.dir}/lib" file="build/dist/lib/${app.name}.jar"/>
+        <copy todir="${install.dir}/conf" file="build/dist/conf/${app.name}.conf"/>
+        <delete dir="${install.dir}/websites/${app.name}"/>
+        <copy todir="${install.dir}/websites/${app.name}">
+            <fileset dir="build/dist/web/${default.web}"/>
         </copy>
     </target>
 
     <target name="alpha" depends="init">
-        <copy todir="${install.dir}/lib" file="build/dist/lib/taakapp.jar"/>
-        <copy todir="${install.dir}/conf" file="build/dist/conf/taakapp.conf"/>
-        <delete dir="${install.dir}/websites/taakapp"/>
-        <copy todir="${install.dir}/websites/taakapp">
+        <copy todir="${install.dir}/lib" file="build/dist/lib/${app.name}.jar"/>
+        <copy todir="${install.dir}/conf" file="build/dist/conf/${app.name}.conf"/>
+        <delete dir="${install.dir}/websites/${app.name}"/>
+        <copy todir="${install.dir}/websites/${app.name}">
             <fileset dir="build/dist/web/alpha"/>
         </copy>
     </target>
 
     <target name="beta" depends="init">
-        <copy todir="${install.dir}/lib" file="build/dist/lib/taakapp.jar"/>
-        <copy todir="${install.dir}/conf" file="build/dist/conf/taakapp.conf"/>
-        <delete dir="${install.dir}/websites/taakapp"/>
-        <copy todir="${install.dir}/websites/taakapp">
+        <copy todir="${install.dir}/lib" file="build/dist/lib/${app.name}.jar"/>
+        <copy todir="${install.dir}/conf" file="build/dist/conf/${app.name}.conf"/>
+        <delete dir="${install.dir}/websites/${app.name}"/>
+        <copy todir="${install.dir}/websites/${app.name}">
             <fileset dir="build/dist/web/beta"/>
+        </copy>
+    </target>
+
+    <target name="delta" depends="init">
+        <copy todir="${install.dir}/lib" file="build/dist/lib/${app.name}.jar"/>
+        <copy todir="${install.dir}/conf" file="build/dist/conf/${app.name}.conf"/>
+        <delete dir="${install.dir}/websites/${app.name}"/>
+        <copy todir="${install.dir}/websites/${app.name}">
+            <fileset dir="build/dist/web/delta"/>
         </copy>
     </target>
 
