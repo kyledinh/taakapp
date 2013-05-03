@@ -3,21 +3,11 @@ What you need:
  - java jdk version 1.6
  - ant version 1.8
  - scala version 2.10 - http://www.scala-lang.org/
- - ninthdrug - https://github.com/ninthdrug/ninthdrug
+ - ninthdrug.jar - https://github.com/ninthdrug/ninthdrug
 
 Optional:
  - postgresql
  - sudo rights to postgres user
-
-Building from source.
- - Extract the tar ball.
- - Change to the taakapp/trunk directory.
- - Edit the build.xml file to fit your installation. At the minimum you may
-   want to change the scala.home property to point to your scala installation
-   and install.dir to point to where you want to install doom.  It is easiest
-   to use the same directory that you installed ninthdrug.
- - Invoke ant.
- - Invoke ant install.
 
 Configuring:
    The installation adds the path to the main doom configuration to your $HOME/.ninthdrug file.
@@ -27,20 +17,28 @@ Configuring:
    You will need sudo rights to the postgres user for this step.
    - create_taakapp_db.sh
 
-
-Edit the fidofinder.conf file to set the correct user and password for the fido database.
-
-Code Generator:
+Edit the conf/taakapp.conf file to set the correct user and password for the taak database.
+Edit appdevkit/daogenerator.conf 
+Edit appdevkit/sql/create_tables.sh
 
 Is written for Postgres.
 - Create a user and a database for that user
-- Edit create_tables.sh
+- Create database and tables
 
+Code Generator:
+ 
 - Use this command to generate a db.description file
-psql taak taaak -h localhost < describe_tables.sql > db.description
+     psql taak taak -h localhost < describe_tables.sql > db.description
 - Edit the daogenerator.conf
 - Run the daogenerator.sh <tablename> for each table
 - Publish code to src directory with publishdaocode.sh
+
+Building from source:
+ - Extract the tar ball
+ - Change to the taakapp/trunk directory
+ - Edit the conf/taakapp.conf file to fit your installation
+ - Invoke ant
+ - Invoke ant deploy
 
 
 Defaults:

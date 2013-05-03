@@ -6,19 +6,16 @@
 
         <!-- check for required tools -->
         <fail message="Missing SCALA_HOME variable in OS environment">
-            <condition>
-                <isset property="${env.SCALA_HOME}"/>
-            </condition>
+            <condition><isset property="${env.SCALA_HOME}"/></condition>
         </fail>
         <fail message="Missing JAVA_HOME variable in OS environment">
-            <condition>
-                <isset property="${env.JAVA_HOME}"/>
-            </condition>
+            <condition><isset property="${env.JAVA_HOME}"/></condition>
         </fail>
 
         <property name="java.home" location="${env.JAVA_HOME}"/>
         <property name="scala.home" location="${env.SCALA_HOME}"/>
         <property file="conf/taakapp.conf"/>
+        
         <echo message="basedir: ${basedir}"/>
         <echo message="java.home:  ${java.home}"/>
         <echo message="scala.home: ${scala.home}"/>
