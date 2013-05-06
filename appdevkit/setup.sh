@@ -31,6 +31,7 @@ mkdir -p $INSTALL_DIR/lib
 mkdir -p $INSTALL_DIR/log
 mkdir -p $INSTALL_DIR/scriptcache
 mkdir -p $INSTALL_DIR/websites
+mkdir -p ../src/main/scala/$APP_NAME/
 
 cp ../lib/*.jar $INSTALL_DIR/lib/
 cp ../conf/$CONF $INSTALL_DIR/conf/

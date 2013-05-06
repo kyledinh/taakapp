@@ -12,6 +12,7 @@ build/
 dist/
 out/
 script/
+appdevkit/daogenerator.sh.jar
 
 # sbt specific
 dist/*
