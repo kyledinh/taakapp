@@ -34,15 +34,11 @@ dt)
 	;;
 	
 md)
-	echo "create $dbuser user"
-	sudo psql -h localhost -U postgres createuser \
-    --no-createdb \
-    --no-createrole \
-    --pwprompt \
-    $dbuser 
+	echo "creating $dbuser user"
+	createuser -h localhost -S -D -R -P $dbuser
 
-	echo "create $dbname database"
-	sudo psql -h localhost -U postgres createdb --owner $dbuser $dbname
+	echo "creating $dbname database"
+	createdb -h localhost $dbname -O $dbuser
 	;;
 	
 dd)	
