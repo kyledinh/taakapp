@@ -17,11 +17,13 @@ This readme.txt will just describe the scripts
 - This script is menu-based wizard to interact with a postgres database
 - Use 1 arg if the db user and database are the same : ./dbadmin.sh <dbname>
 - Use 2 args if the db user and database are different: ./dbadmin.sh <dbname> <dbuser>
-- Menu Option: mt) will make the db user then the database
+- Menu Option: make) will make the db user then the database
+- Menu Option: drop) will drop the db user then the database
 - Menu Option: dd) will drop the database
 - Menu Option: ct) will create the tables (from sql/create_tables.sql)
 - Menu Option: dt) will drop the tables   (from sql/drop_tables.sql)
 - Menu Option: desc) will generate the sql/db.description file to be used by daogenerator.sh
+- Menu Option: show) will describe all databases and users
 
 3. daogenerator.sh 
 
