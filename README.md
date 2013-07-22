@@ -1,6 +1,8 @@
 ## TAAKAPP 
 This is a template app for the Ninthdrug Scala webserver. You can download and build the ninthdrug.jar from source at https://github.com/ninthdrug/ninthdrug or use the one included in this repo. There's an "appdevkit" directory that has a collection of bash scripts to help you install and update your app.
 
+[Video Tutorial](http://youtu.be/4Y3x2uriPhU)
+
 ## REQUIREMENTS:
 
 * linux server
@@ -28,6 +30,7 @@ This is a template app for the Ninthdrug Scala webserver. You can download and b
 
 * dbadmin.sh (md) 
 * dbadmin.sh (ct)
+* [Postgres Notes](https://github.com/kyledinh/toolkit/wiki/Postgres)
 
 ## CODE GENERATOR:
  
