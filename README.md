@@ -3,7 +3,7 @@ This is a template app for the Ninthdrug Scala webserver. You can download and b
 
 [Video Tutorial](http://youtu.be/4Y3x2uriPhU)
 
-## REQUIREMENTS:
+## Requirements
 
 * linux server
 * java jdk version 1.6
@@ -11,12 +11,12 @@ This is a template app for the Ninthdrug Scala webserver. You can download and b
 * scala version 2.10 - http://www.scala-lang.org/
 *  ninthdrug.jar - https://github.com/ninthdrug/ninthdrug
 
-## OPTIONS:
+## Options
 
 * postgresql
 * sudo rights to postgres user
 
-## CONFIGURATION:
+## Configuration
 
 * Edit the conf/taakapp.conf
 * This config file can be renamed, just update to build.xml (<property file="conf/taakapp.conf"/>)
@@ -26,31 +26,31 @@ This is a template app for the Ninthdrug Scala webserver. You can download and b
 * Edit start_webserver
 * Run setup.sh
 
-## DATABASE:
+## Database
 
 * dbadmin.sh (md) 
 * dbadmin.sh (ct)
 * [Postgres Notes](https://github.com/kyledinh/toolkit/wiki/Postgres)
 
-## CODE GENERATOR:
+## Code Generator
  
 * Use dbadmin.sh (desc) to generate db.description
 * Run the daogenerator.sh <tablename> for each table
 * Publish code to src directory with publishdaocode.sh
 
-## EDIT SOURCE CODE:
+## Edit Source Code
 
 * Customize src/web/alpha
 * Customize src/main/scala
 
-## BUILD AND DEPLOY:
+## Build and Deploy
 
 * Invoke ant
 * Invoke ant deploy
 * Run <install.dir>/bin/start_webserver
  
 
-## DEFAULT SETUP:
+## Default Setup
 ```
 ~/.ninthdrug
      /opt/ninthdrug/conf/ninthdrug.conf
@@ -64,11 +64,11 @@ This is a template app for the Ninthdrug Scala webserver. You can download and b
 /opt/ninthdrug/websites/<taakapp>/
 ```
 
-## REFERENCES:
+## References
 
 
 
-## NOTES:
+## Notes
 
 The daogenerator.sh is written for tables with these two required fields. "active" should
 be defaulted to true.
