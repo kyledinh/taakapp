@@ -47,8 +47,8 @@ make)
 	
 drop)
 	echo "dropping user and database $dbname"
-	psql $dbname $dbuser -h localhost -c "DROP USER '$dbuser';" 
 	dropdb -h localhost $dbname;
+	psql -h localhost -c "DROP USER $dbuser;" 
 	;;		
 	
 dd)	

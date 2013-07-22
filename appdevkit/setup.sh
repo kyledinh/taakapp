@@ -34,7 +34,7 @@ mkdir -p $INSTALL_DIR/websites
 mkdir -p ../src/main/scala/$APP_NAME/
 
 cp ../lib/*.jar $INSTALL_DIR/lib/
-cp ../conf/$CONF $INSTALL_DIR/conf/
+cp ../conf/*.conf $INSTALL_DIR/conf/
 cp start_webserver $INSTALL_DIR/bin/
 
-echo "Installation Done. Look in $INSTALL_DIR."
+echo "Installation Done. Look in $INSTALL_DIR"
