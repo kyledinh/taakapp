@@ -13,6 +13,10 @@ if [ -e "$2" ]; then
 	dbuser=$2
 fi
 
+echo "Current Tables:"
+psql $1 -h localhost -c "\d"
+echo "  "
+
 echo "Postgres Menu for $dbname :"
 echo " ct) create tables"
 echo " dt) drop tables"
@@ -20,6 +24,7 @@ echo " dd) drop database"
 echo " make) make database & user"
 echo " drop) drop database & user"
 echo " desc) describe tables"
+echo " show) shows tables & users"
 
 read choice;
  
@@ -49,6 +54,9 @@ drop)
 	echo "dropping user and database $dbname"
 	dropdb -h localhost $dbname;
 	psql -h localhost -c "DROP USER $dbuser;" 
+
+	psql -h localhost -c "\l"
+	psql -h localhost -c "\du"
 	;;		
 	
 dd)	
