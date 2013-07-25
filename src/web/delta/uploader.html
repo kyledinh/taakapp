@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Taakapp with Twitter Bootstrap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons 
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+    -->
+                                   <link rel="shortcut icon" href="img/favicon.ico">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="#">TaakApp</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li><a href="home.html">Home</a></li>
+              <li><a href="createatask.html">Create A Task</a></li>
+              <li class="active"><a href="uploader.html">Uploader</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <!-- Main hero unit for a primary marketing message or call to action -->
+      <div class="hero-unit">
+        <h1>Uploader</h1>
+        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer egestas pellentesque justo in iaculis. Suspendisse suscipit ultricies elit id pharetra. Quisque quis sem sed risus vehicula scelerisque id consectetur lorem. Mauris hendrerit turpis nec elit pretium, nec tristique velit tempor. Integer condimentum tellus at ligula dictum imperdiet. Curabitur et suscipit nisi. Curabitur eu enim vitae nulla tristique eleifend in sed ipsum. Ut dapibus lacus elementum, eleifend libero sed, semper justo. Cras ut orci volutpat, consequat ante sit amet, placerat diam. Donec non odio at arcu pretium molestie vel id quam. Aliquam mattis dui non felis malesuada dictum. Vestibulum diam urna, pellentesque eu rhoncus at, tempor et sapien. Donec cursus eu eros eget eleifend. Aliquam vehicula convallis erat non porta. Proin in orci erat. Sed at tincidunt neque.
+		</p>
+		
+		<p>Aliquam commodo eleifend lacus quis sollicitudin. Morbi in erat enim. Maecenas mattis tortor augue, et tempor nibh tristique eu. Donec tortor est, adipiscing sit amet vehicula a, adipiscing id libero. Suspendisse vehicula aliquam volutpat. Suspendisse in sagittis orci, tempor bibendum tortor. In hendrerit diam at sapien tempus sollicitudin. Pellentesque nec sollicitudin tortor. Mauris placerat est eu augue pellentesque, ac posuere augue sollicitudin. Donec mollis nulla id mollis rhoncus.
+        </p>
+      </div>
+      
+      <div class="row">
+        <div class="span4">
+          <h2>Heading</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn" href="#">View details &raquo;</a></p>
+        </div>
+        <div class="span4">
+          <h2>Heading</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn" href="#">View details &raquo;</a></p>
+       </div>
+        <div class="span4">
+          <h2>Heading</h2>
+          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          <p><a class="btn" href="#">View details &raquo;</a></p>
+        </div>
+      </div>
+
+
+
+      <hr>
+    </div> <!-- /container -->
+
+
+
+    <div id="footer">
+      <div class="container">
+        <p class="muted credit">TaakApp with Twitter Bootstrap by <a href="https://github.com/kyledinh/taakapp">Kyle Dinh</a>. Running on <a href="https://github.com/ninthdrug/ninthdrug">Ninthdrug</a> Scala webserver.</p>
+      </div>
+    </div>
+
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/zen.js"></script>
+    <script src="js/kjs.js"></script>
+    <script>
+    function updateTaskTable(records) {    
+      var N = records.length;
+      for (var i=0; i < N; i++) {
+        var rec = records[i];    
+        var row = kjs.create("tr", "");    
+        row.appendChild(kjs.create("td", rec.id, "", ""));
+        row.appendChild(kjs.create("td", rec.google_id , "", ""));  
+        row.appendChild(kjs.create("td", rec.task_title, "", ""));
+        row.appendChild(kjs.create("td", rec.task_type, "", ""));
+        row.appendChild(kjs.create("td", rec.task_desc, "", ""));
+        kjs.id("task_table").appendChild(row);    
+      }
+    } 
+
+    function pageInit() {
+      kjs.initAjax("rest_listalltasks.taak", updateTaskTable);
+    }
+    </script>
+
+  </body>
+</html>

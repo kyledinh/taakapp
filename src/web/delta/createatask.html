@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Taakapp with Twitter Bootstrap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons 
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+    -->
+                                   <link rel="shortcut icon" href="img/favicon.ico">
+  </head>
+
+  <body onload="pageInit()">
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="#">TaakApp</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li><a href="home.html">Home</a></li>
+              <li class="active"><a href="createatask.html">Create A Task</a></li>
+              <li><a href="uploader.html">Uploader</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <!-- Main hero unit for a primary marketing message or call to action -->
+      <div class="hero-unit">
+        <h1>Create A New Task</h1>
+        <p>Enter your new task. Select a category type too.</p>
+        <p>
+        <form action="newtask.taak" method="post">
+            <table id="tb1">
+                <tr>
+                    <td>Google Id: </td>
+                    <td><input type="text" name="google_id" /></td>
+                </tr>
+                <tr>
+                    <td>Task Title: </td>
+                    <td><input type="text" name="task_title" /></td>
+                </tr>
+                <tr>
+                    <td>Task Type:</td>
+                    <td><select id="task_type_select" name="task_type" />
+			            <option id="task_type_option" value="">......</option>
+			            </select>
+		            </td>
+                </tr>
+                <tr>
+                    <td>Task Description:</td>
+                    <td><input type="text" name="task_desc" /></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Submit" /></td>
+                </tr>
+            </table>
+        </form> 
+        </p>
+      </div>
+
+      <hr>
+    </div> <!-- /container -->
+
+
+    <div id="footer">
+      <div class="container">
+        <p class="muted credit">TaakApp with Twitter Bootstrap by <a href="https://github.com/kyledinh/taakapp">Kyle Dinh</a>. Running on <a href="https://github.com/ninthdrug/ninthdrug">Ninthdrug</a> Scala webserver.</p>
+      </div>
+    </div>
+
+
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/zen.js"></script>
+    <script src="js/kjs.js"></script>
+    <script>
+	function populateTaskType(obj) {  
+  		for (var key in obj) {
+    	var row = kjs.clone(kjs.id("task_type_option"), null);
+    	row.setAttribute("value", key);
+    	row.innerHTML = obj[key];
+    	kjs.id("task_type_select").appendChild(row);          
+  		}  
+	}
+
+	function pageInit() {
+  		kjs.initAjax("js/types_of_tasks.json", populateTaskType);
+	}
+    </script>
+
+  </body>
+</html>
