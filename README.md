@@ -1,7 +1,10 @@
 ## TAAKAPP 
 This is a template app for the Ninthdrug Scala webserver. You can download and build the ninthdrug.jar from source at https://github.com/ninthdrug/ninthdrug or use the one included in this repo. There's an "appdevkit" directory that has a collection of bash scripts to help you install and update your app.
 
-[Video Tutorial](http://youtu.be/WM95ZEbDL9o)
+* [Video Demo](http://youtu.be/WM95ZEbDL9o)
+
+[![VIDEO](http://img.youtube.com/vi/WM95ZEbDL9o/0.jpg)](http://www.youtube.com/watch?v=WM95ZEbDL9o)
+
 
 ## Requirements
 
