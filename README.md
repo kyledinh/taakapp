@@ -3,6 +3,9 @@ This is a template app for the Ninthdrug Scala webserver. You can download and b
 
 * [Video Tutorial](http://youtu.be/WM95ZEbDL9o)
 
+[![VIDEO](http://img.youtube.com/vi/WM95ZEbDL9o/0.jpg)](http://www.youtube.com/watch?v=WM95ZEbDL9o)
+
+
 ## Requirements
 
 * linux server
